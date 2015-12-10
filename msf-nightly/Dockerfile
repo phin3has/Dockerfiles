@@ -12,6 +12,7 @@ RUN ["service","postgresql","start"]
 RUN msfdb init
 
 #Install Nightly builds
+RUN apt-get -y remove metasploit-framework
 RUN /usr/bin/curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
 RUN chmod 755 msfinstall
 RUN /msfinstall
