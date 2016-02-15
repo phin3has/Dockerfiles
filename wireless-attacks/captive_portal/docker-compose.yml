@@ -1,0 +1,14 @@
+hostapd:
+    build: hostapd/
+    volumes:
+        - /home/awhitehatter/hostapd/conf:/conf
+    privileged: true
+    net: "host"
+    command: [/bin/bash, -c, ./init.sh]
+web:
+    image: richarvey/nginx-php-fpm
+    ports:
+        - "8888:80"
+    volumes:
+        - .:/logs:rw
+        - /home/awhitehatter/site/:/usr/share/nginx/html
